@@ -1,0 +1,12 @@
+<h1 class="text-center">
+  Find The missing Number
+</h1>
+<div class="container d-flex justify-content-center align-items-center">
+<mat-form-field>
+  <mat-label>Enter The Pos</mat-label>
+  <input matInput #myInput>
+</mat-form-field>
+<button mat-raised-button (click)="onSubmit(myInput.value)" class="btn btn-primary ml-2">
+  Find
+</button>
+</div>

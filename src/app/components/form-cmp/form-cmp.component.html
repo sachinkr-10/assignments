@@ -1,0 +1,39 @@
+<div class="container">
+
+  <h1>Adding phone Number</h1>
+
+  <form [formGroup]="phoneNoForm" (ngSubmit)="onSubmit()">
+
+    <p>
+      <label for="phoneNo">PhoneNo:</label>
+      <input type="tel" id="phoneNo" name="phoneNo" formControlName="phoneNo" class="form-control">
+    </p>
+    <div *ngIf="f.phoneNo.touched && f.phoneNo.invalid" class="alert alert-danger">
+      <div *ngIf="f.phoneNo.errors.required">Mobile Number is required.</div>
+      <div *ngIf="f.phoneNo.errors.pattern">Please, Enter 10 digit Mobile Number.</div>
+  </div>
+
+    <table class="table table-bordered" formArrayName="phoneNumbers">
+      <tr>
+        <th colspan="2">Add Phone No:</th>
+        <th width="150px"><button type="button" (click)="addQuantity()" class="btn btn-primary">Add More</button></th>
+      </tr>
+      <tr *ngFor="let quantity of phoneNumber().controls; let i=index" [formGroupName]="i">
+        <td>
+            PhoneNumber :
+            <input type="tel" formControlName="extraPhone" class="form-control">
+
+        </td>
+        <td>
+            <button (click)="removeQuantity(i)" class="btn btn-danger">Remove</button>
+        </td>
+      </tr>
+    </table>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+
+  </form>
+
+  <br/>
+  <!-- {{this.phoneNoForm.value | json}} -->
+</div>

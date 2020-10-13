@@ -1,0 +1,40 @@
+<div class="container">
+
+  <h1>Component-x</h1>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <p>
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" formControlName="name" class="form-control">
+    </p>
+
+
+    <table class="table table-bordered" formArrayName="phoneNumbers">
+      <tr>
+        <th colspan="2">Add Component Y:</th>
+        <th width="150px"> <div class="example-button-container">
+            <button (click)="addQuantity()" mat-fab color="primary" aria-label="Example icon button with a delete icon">
+              <mat-icon>add</mat-icon>
+            </button>
+          </div>
+      </tr>
+      <tr *ngFor="let quantity of added().controls; let i=index" [formGroupName]="i">
+        <td>
+            Added Y:
+            <input type="tel" formControlName="extraPhone" class="form-control">
+
+        </td>
+        <td>
+            <button (click)="removeQuantity(i)" class="btn btn-danger">Remove</button>
+        </td>
+      </tr>
+    </table>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+
+  </form>
+
+  <br/>
+  <!-- {{this.phoneNoForm.value | json}} -->
+</div>
